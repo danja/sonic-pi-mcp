@@ -44,3 +44,33 @@ live_loop :funky_bass do
   play :d2, release: 0.2
   sleep 0.5
 end
+
+live_loop :moody_melody do
+  use_synth :prophet
+  use_synth_defaults release: 0.4, cutoff: 90, amp: 0.5, attack: 0.1
+
+  # Original moody, atmospheric melody
+  play :b4, release: 0.6
+  sleep 1
+  play :a4, release: 0.3
+  sleep 0.5
+  play :g4, release: 0.5
+  sleep 0.5
+
+  play :e4, release: 0.8
+  sleep 1
+  play :fs4, release: 0.4
+  sleep 1
+
+  play :b4, release: 0.5
+  sleep 0.75
+  play :a4, release: 0.3
+  sleep 0.25
+  play :g4, release: 0.6
+  sleep 1
+
+  play :d4, release: 0.5
+  sleep 0.5
+  play :e4, release: 0.7
+  sleep 0.5
+end
