@@ -47,6 +47,8 @@ nope, it's not supported
 
 4559 port is changed to 4560
 
+https://in-thread.sonic-pi.net/t/changing-osc-listening-port/3082/3
+
 hardwired in psonic lib, seem to have version incompatibility with what I got from Ubuntu repo.
 
   "sonic-pi": {
