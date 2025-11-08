@@ -1,6 +1,7 @@
 
-# Hip-Hop Beat
+# Hip-Hop Beat with Funky Bassline
 use_bpm 90
+
 live_loop :hip_hop_drums do
   sample :drum_bass_hard, amp: 1.2
   sleep 1
@@ -12,4 +13,34 @@ live_loop :hip_hop_drums do
   sleep 0.5
   sample :drum_snare_hard, amp: 0.9
   sleep 1
+end
+
+live_loop :funky_bass do
+  use_synth :fm
+  use_synth_defaults release: 0.3, cutoff: 80, amp: 0.6
+
+  # Funky bassline pattern
+  play :e2, release: 0.2
+  sleep 0.5
+  play :e2, release: 0.1
+  sleep 0.25
+  play :g2, release: 0.15
+  sleep 0.25
+
+  play :a2, release: 0.25
+  sleep 0.75
+  play :g2, release: 0.1
+  sleep 0.25
+
+  play :e2, release: 0.3
+  sleep 0.5
+  play :e2, release: 0.1
+  sleep 0.25
+  play :d2, release: 0.15
+  sleep 0.25
+
+  play :c2, release: 0.2
+  sleep 0.5
+  play :d2, release: 0.2
+  sleep 0.5
 end
