@@ -7,7 +7,7 @@ This repository includes a Node.js MCP (Model Context Protocol) server for contr
 
 ### Location
 - MCP server code: `/mcp/`
-- Example file: `src/hip.sp` (hip hop beat)
+- Example file: `src/hip.rb` (hip hop beat)
 
 ### Features
 - Direct OSC communication with Sonic Pi (no psonic dependency)
