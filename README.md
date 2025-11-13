@@ -42,7 +42,7 @@ npm install
 
 The following should set things up:
 ```sh
-claude mcp add sp-mcp npx '@sp-mcp/mcp@latest'
+claude mcp add sp-mc npx '@sp-mcp/mcp@latest'
 ```
 
 eg. in `~/.claude.json`:
