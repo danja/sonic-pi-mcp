@@ -2,6 +2,8 @@
 
 This connects any MCP client with [Sonic Pi](https://sonic-pi.net/) enabling you to create music with English.
 
+**Tell Claude : "Use mcp to create an Acid House track with 120 bpm in the key of F"**
+
 ## Sonic Pi MCP Server
 
 *I wanted to use [mcp-sonic-pi](https://github.com/vinayak-mehta/mcp-sonic-pi) but had version issues on my system so ported it to Node*

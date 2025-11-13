@@ -13,8 +13,9 @@ This repository contains a Node.js MCP (Model Context Protocol) server for contr
 The MCP server is built with three main components:
 
 1. **server.js** - Main MCP server implementing the Model Context Protocol
-   - Exports 4 tools: `initialize_sonic_pi`, `play_music`, `stop_music`, `get_beat_pattern`
+   - Exports 5 tools: `initialize_sonic_pi`, `play_music`, `stop_music`, `get_beat_pattern`, `make_acid`
    - Contains beat patterns for blues, rock, hiphop, and electronic styles
+   - `make_acid` generates classic acid house tracks with TB-303 basslines
    - Handles tool calls and routes them to the Sonic Pi client
 
 2. **sonic-pi-client.js** - OSC communication layer
@@ -100,6 +101,35 @@ When writing Sonic Pi code:
 Chords use the format: `chord(tonic, name)` or `play chord(tonic, name)`
 - Example: `chord(:C, :major)`, `chord(:C, '7')`, `chord(:C, :m7)`
 - See server.js:95-160 for complete chord name reference
+
+## MCP Tools
+
+The server provides the following tools:
+
+### `initialize_sonic_pi`
+Initializes connection to Sonic Pi. Must be called before playing music.
+
+### `play_music`
+Sends Sonic Pi Ruby code to execute. Automatically stops previous playback.
+- Parameter: `code` (string) - Sonic Pi Ruby code
+
+### `stop_music`
+Stops all currently playing Sonic Pi jobs.
+
+### `get_beat_pattern`
+Returns pre-defined drum beat patterns.
+- Parameter: `style` (string) - One of: blues, rock, jazz, hiphop, electronic
+
+### `make_acid`
+Generates a classic acid house track with TB-303 bassline.
+- Parameters:
+  - `bpm` (number, optional) - Tempo in beats per minute (default: 128)
+  - `key` (string, optional) - Musical key (default: 'e')
+- Features:
+  - TB-303 synth with randomized filter sweeps
+  - 4/4 house kick pattern
+  - 16th note hi-hats with occasional open hats
+  - Clap/snare on beats 2 and 4
 
 ## Key Technical Details
 
