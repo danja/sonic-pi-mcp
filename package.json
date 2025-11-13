@@ -1,9 +1,12 @@
 {
   "name": "sp-mc",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "MCP server for controlling Sonic Pi via OSC",
   "type": "module",
   "main": "mcp/server.js",
+  "bin": {
+    "sp-mc": "mcp/server.js"
+  },
   "scripts": {
     "start": "node mcp/server.js",
     "test": "vitest run",

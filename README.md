@@ -30,6 +30,12 @@ The server provides five tools:
 
 ### Setup
 
+The easy way is :
+
+```sh
+claude mcp add sp-mc npx 'sp-mc@latest'
+```
+
 #### Installation
 
 ```sh
@@ -40,10 +46,6 @@ npm install
 
 #### Configure MCP Connection
 
-The following should set things up:
-```sh
-claude mcp add sp-mc npx '@sp-mcp/mcp@latest'
-```
 
 eg. in `~/.claude.json`:
 ```json
