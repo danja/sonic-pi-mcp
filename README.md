@@ -52,6 +52,12 @@ Or run it directly from the CLI (no MCP needed):
 npx sp-mc-render --path examples/techno_banger.rb --output out.mid --bars 8 --loops kick,hats,bass,lead
 ```
 
+Quick wrapper script (in repo root) without npx:
+```sh
+./render.sh examples/techno_banger.rb 8
+# writes examples/techno_banger.mid
+```
+
 Known limitations (planned improvements):
 - Complex Ruby control flow/randomness is skipped with warnings.
 - Timing is best-effort for straightforward `sleep`/`.times`; no randomness/conditionals.
