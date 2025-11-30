@@ -10,6 +10,7 @@ import {
 } from '@modelcontextprotocol/sdk/types.js';
 import { SonicPiClient } from './sonic-pi-client.js';
 import { logDirectoryExists } from './log-parser.js';
+import { renderSonicPiToMidi } from './render/index.js';
 
 // Beat patterns (same as Python version)
 const BEAT_PATTERNS = {
@@ -244,6 +245,29 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
           },
         },
       },
+      {
+        name: 'render_midi',
+        description:
+          'Read a Sonic Pi .rb file and render it as a .mid file with separate tracks per instrument (drums split by instrument)',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            path: { type: 'string', description: 'Path to Sonic Pi Ruby file' },
+            bars: { type: 'number', description: 'Number of bars to unroll (default 8)' },
+            output: { type: 'string', description: 'Optional output .mid path' },
+            loop_names: {
+              type: 'array',
+              items: { type: 'string' },
+              description: 'Optional list of live_loop names to include',
+            },
+            drum_split: {
+              type: 'boolean',
+              description: 'Whether to split drum instruments into separate tracks (default true)',
+            },
+          },
+          required: ['path'],
+        },
+      },
     ],
   };
 });
@@ -436,6 +460,35 @@ end`;
             {
               type: 'text',
               text: acidCode,
+            },
+          ],
+        };
+      }
+
+      case 'render_midi': {
+        const result = renderSonicPiToMidi({
+          filePath: args.path,
+          bars: args.bars,
+          output: args.output,
+          loopNames: args.loop_names,
+          drumSplit: args.drum_split !== false,
+        });
+
+        const summary = `MIDI written to ${result.midiPath}
+Tracks: ${result.tracks
+          .map(
+            (t) =>
+              `${t.name} (channel ${t.channel + 1}${t.isPercussion ? ', drums' : ''}, program ${t.instrumentNumber})`
+          )
+          .join('; ')}
+Events: ${result.eventCount}
+Warnings: ${result.warnings.length ? result.warnings.join(' | ') : 'none'}`;
+
+        return {
+          content: [
+            {
+              type: 'text',
+              text: summary,
             },
           ],
         };

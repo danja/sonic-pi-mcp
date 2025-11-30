@@ -25,6 +25,7 @@
   "license": "MIT",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.0.4",
+    "@tonejs/midi": "^2.0.28",
     "osc": "^2.4.5"
   },
   "devDependencies": {

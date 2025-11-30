@@ -7,11 +7,11 @@ export default defineConfig({
     testTimeout: 10000,
     hookTimeout: 10000,
     teardownTimeout: 10000,
-    // Run tests sequentially to avoid file system race conditions
-    pool: 'forks',
+    // Run tests sequentially to avoid file system race conditions; threads avoid child-process import quirks
+    pool: 'threads',
     poolOptions: {
-      forks: {
-        singleFork: true,
+      threads: {
+        singleThread: true,
       },
     },
     // Use mock by default, can be overridden with USE_MOCK_SONIC_PI env var
